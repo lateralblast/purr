@@ -22,5 +22,5 @@ Examples
 Remove old kernel modules:
 
 ```
-./purr,sh --action removeoldkernels
+./purr.sh --action removeoldkernels
 ```
