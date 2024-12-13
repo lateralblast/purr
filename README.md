@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/lateralblast/purr/master/images/purr.jpg)
+![alt tag](https://raw.githubusercontent.com/lateralblast/purr/master/purr.jpg)
 
 PURR
 ----
