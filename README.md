@@ -8,7 +8,7 @@ Package/Utility Removal/Remediation
 Version
 -------
 
-Current version 0.0.2
+Current version 0.0.3
 
 Introduction
 ------------
@@ -22,6 +22,8 @@ Usage
 To get usage/help information:
 
 ```
+./purr.sh --help
+
 Usage: purr.sh --switch [value]
 
 switches:
@@ -41,7 +43,7 @@ switches:
  --option*)
    Option to enable
  --usage*)
-   Get usage information
+   Action to perform
  --help|-h)
    Print help information
 ```
@@ -49,23 +51,29 @@ switches:
 Get usage information about options:
 
 ```
+./purr.sh --usage options
+
 Usage: purr.sh --option(s) [value]
 
 options:
 -------
- debug)
-   Enable debug mode
- force)
-   Enable force mode
- strict)
-   Enable strict mode
- verbose)
-   Enable verbose mode
+debug)
+  Enable debug mode
+force)
+  Enable force mode
+yes)
+  Answer yes to questions
+strict)
+  Enable strict mode
+verbose)
+  Enable verbose mode
 ```
 
 Get usage information about actions:
 
 ```
+./purr.sh --usage actions
+
 Usage: purr.sh --action(s) [value]
 
 actions:

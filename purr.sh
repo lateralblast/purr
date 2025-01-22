@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Name:         purr (Package/Utility Removal/Remediation)
-# Version:      0.0.2
+# Version:      0.0.3
 # Release:      1
 # License:      CC-BA (Creative Commons By Attribution)
 #               http://creativecommons.org/licenses/by/4.0/legalcode
@@ -169,6 +169,7 @@ execute_command () {
 
 print_help () {
   script_help=$( grep -A1 "# switch" "$script_file" |sed "s/^--//g" |sed "s/# switch//g" | tr -s " " |grep -Ev "=|echo" |sed "s/#/ /g" | sed "/^\s*$/d" )
+  echo ""
   echo "Usage: $script_bin --switch [value]"
   echo ""
   echo "switches:"
@@ -181,6 +182,7 @@ print_help () {
 
 print_actions () {
   script_actions=$( grep -A1 "# action" "$script_file" |sed "s/^--//g" |sed "s/# action//g" | tr -s " " |grep -Ev "=|echo" |sed "s/#/ /g" |sed "/^\s*$/d" )
+  echo ""
   echo "Usage: $script_bin --action(s) [value]"
   echo ""
   echo "actions:"
@@ -193,6 +195,7 @@ print_actions () {
 
 print_options () {
   script_options=$( grep -A1 "# option" "$script_file" |sed "s/^--//g" |sed "s/# option//g" | tr -s " " |grep -Ev "=|echo" |sed "s/#/ /g" |sed "/^\s*$/d" )
+  echo ""
   echo "Usage: $script_bin --option(s) [value]"
   echo ""
   echo "options:"
@@ -282,7 +285,7 @@ process_options () {
       # Enable force mode
       do_force="true"
       ;;
-    yes)
+    yes)                  # option
       # Answer yes to questions
       do_yes="true"
       ;;
@@ -371,7 +374,7 @@ while test $# -gt 0; do
     --option*)            # switch
       # Option to enable
       check_value "$1" "$2"
-      actions="$2"
+      options="$2"
       do_options="true"
       shift 2
       ;;
