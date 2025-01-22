@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Name:         purr (Package/Utility Removal/Remediation)
-# Version:      0.0.1
+# Version:      0.0.2
 # Release:      1
 # License:      CC-BA (Creative Commons By Attribution)
 #               http://creativecommons.org/licenses/by/4.0/legalcode
@@ -133,7 +133,7 @@ check_value () {
     fi
   else
     if [ "$value" = "" ]; then
-      verbose_message "No value given for parameter $paraameter" "verbose"
+      verbose_message "No value given for parameter $parameter" "verbose"
       echo ""
       if [[ "$parameter" =~ "option" ]]; then
         print_options
@@ -316,7 +316,7 @@ process_actions () {
       print_version
       exit
       ;;
-    *oldkernels)
+    *oldkernels)          # action
       # Remove old kernels
       remove_old_kernels
       exit
@@ -348,7 +348,7 @@ while test $# -gt 0; do
       do_debug="true"
       shift
       ;;
-    --debug)              # switch
+    --force)              # switch
       # Enable force mode
       do_force="true"
       shift
@@ -369,6 +369,7 @@ while test $# -gt 0; do
       exit
       ;;
     --option*)            # switch
+      # Option to enable
       check_value "$1" "$2"
       actions="$2"
       do_options="true"
@@ -382,8 +383,13 @@ while test $# -gt 0; do
       shift 2
       exit
       ;;
-    *|--help|-h)          # switch
-      # Print help information
+    --help|-h)          # switch
+        # Print help information
+        print_help
+        shift
+        exit
+        ;;
+    *)
       print_help
       shift
       exit
